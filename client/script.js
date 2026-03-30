@@ -18,7 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const songTitleDisplay = document.getElementById("song-title-display");
     const uploadMoreBtn = document.getElementById("upload-more-btn");
 
-    const backendUrl = "http://localhost:3000";
+    // const backendUrl = "http://localhost:3000";
+    const backendUrl = "https://mp3-tageditor.onrender.com/";
 
     let currentFileId = null;
     let filename = null;
