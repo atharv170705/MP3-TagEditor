@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const uploadMoreBtn = document.getElementById("upload-more-btn");
 
     // const backendUrl = "http://localhost:3000";
-    const backendUrl = "https://mp3-tageditor.onrender.com/";
+    const backendUrl = "https://mp3-tageditor.onrender.com";
 
     let currentFileId = null;
     let filename = null;
