@@ -1,0 +1,294 @@
+/* ==== Global Reset ==== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ==== Theme Variables ==== */
+:root {
+    --bg-main: #0b0c10;
+    --bg-card: #1f2833;
+    --accent: #66fcf1;
+    --accent-soft: #45a29e;
+    --text-main: #f5f7fb;
+    --text-muted: #c5c6c7;
+    --danger: #ff4f6a;
+    --border-radius: 14px;
+    --shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.35);
+    --transition-fast: 0.2s ease;
+    --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* ==== Page Background ==== */
+body {
+    font-family: var(--font-main);
+    background: radial-gradient(circle at top, #1f2833 0, #0b0c10 45%, #050608 100%);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+}
+
+/* ==== Main Container ==== */
+.container {
+    width: 100%;
+    max-width: 520px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* ==== Card ==== */
+#upload-audio-page,
+#tag-editor-form,
+#download-page {
+    background: linear-gradient(145deg, #1f2833, #151a22);
+    border-radius: var(--border-radius);
+    padding: 22px;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(102, 252, 241, 0.08);
+    backdrop-filter: blur(10px);
+}
+#tag-editor-form {
+    margin: 40px;
+}
+.uploadaudiopage {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* ==== Headings ==== */
+h2 {
+    text-align: center;
+    margin-bottom: 14px;
+    letter-spacing: 0.04em;
+}
+
+/* ==== Drag & Drop Audio Upload ==== */
+#audio-input {
+    display: none;
+}
+
+.audio-drop-zone {
+    border: 2px dashed rgba(102, 252, 241, 0.35);
+    border-radius: 16px;
+    padding: 28px 24px;
+    min-height: 160px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    text-align: center;
+    cursor: pointer;
+
+    background: rgba(10, 13, 20, 0.6);
+    color: var(--text-muted);
+
+    transition:
+        border var(--transition-fast),
+        background var(--transition-fast),
+        color var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+.audio-drop-zone:hover {
+    border-color: var(--accent);
+    background: rgba(102, 252, 241, 0.06);
+    color: var(--text-main);
+}
+
+.audio-drop-zone.dragover {
+    border-color: var(--accent);
+    background: rgba(102, 252, 241, 0.12);
+    box-shadow: 0 0 0 2px rgba(102, 252, 241, 0.25);
+    color: var(--text-main);
+}
+
+
+/* ==== Form ==== */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* ==== Labels ==== */
+label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* ==== Inputs ==== */
+input[type="text"],
+input[type="number"],
+input[type="file"] {
+    padding: 10px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(10, 13, 20, 0.9);
+    color: var(--text-main);
+    outline: none;
+    font-size: 0.9rem;
+    transition: border var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+input::placeholder {
+    color: var(--text-muted);
+    opacity: 0.7;
+}
+
+input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px rgba(102, 252, 241, 0.45);
+}
+
+/* ==== Buttons ==== */
+button {
+    align-self: center;
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-weight: 500;
+    background: var(--accent);
+    color: #000;
+    box-shadow: 0 8px 18px rgba(102, 252, 241, 0.35);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+}
+
+button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(102, 252, 241, 0.5);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(102, 252, 241, 0.25);
+}
+
+
+
+.upload-btn {
+    margin-top: 6px;
+    padding: 10px 22px;
+    border-radius: 999px;
+    border: none;
+    background: var(--accent);
+    color: #000;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+
+    box-shadow: 0 8px 18px rgba(102, 252, 241, 0.35);
+    transition:
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+.upload-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(102, 252, 241, 0.5);
+}
+
+
+
+/* ==== Download Button ==== */
+#download-btn {
+    margin-top: 14px;
+    text-align: center;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: #e9fdff;
+    font-weight: 600;
+    align-self: center;
+}
+
+#download-btn:hover {
+    background: #3b8f8a;
+}
+
+/* ==== Utility ==== */
+.hidden {
+    display: none;
+}
+
+
+/* Hide native file button but keep input usable */
+.file-input {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(10, 13, 20, 0.9);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Hide the ugly button (Chrome, Edge, Safari) */
+.file-input::-webkit-file-upload-button {
+    display: none;
+}
+
+/* Firefox */
+.file-input::file-selector-button {
+    display: none;
+}
+
+/* Hover & focus */
+.file-input:hover,
+.file-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px rgba(102, 252, 241, 0.35);
+    color: var(--text-main);
+    cursor: pointer;
+}
+
+/* Preview image (optional) */
+.album-art-preview {
+    margin-top: 10px;
+    width: 128px;
+    height: 128px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+/* Preview layout */
+.audio-preview-row {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+}
+
+
+/* Download button */
+#download-btn {
+    padding: 10px 22px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #000;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+}
+
+/* Optional: subtle container */
+#download-page {
+    text-align: center;
+}
+
+
+#upload-more-btn {
+    font-weight: 600;
+}
